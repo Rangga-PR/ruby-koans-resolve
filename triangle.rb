@@ -15,6 +15,14 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
+  triangle = [a, b, c]
+
+  if !triangle.uniq!
+    return :scalene
+  else
+    triangle.uniq.length == 2 ? :isosceles :  :equilateral
+  end
+
 end
 
 # Error class used in part 2.  No need to change this code.
