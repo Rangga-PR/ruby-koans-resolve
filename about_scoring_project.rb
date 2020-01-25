@@ -30,6 +30,38 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 # Your goal is to write the score method.
 
 def score(dice)
+  score = 0
+  if dice.select { |num| num == 1 }.length == 3
+    score += 1000
+  else
+    score += (dice.select { |num| num == 1 }.length / 3).floor * 1000
+    score += (dice.select { |num| num == 1 }.length % 3) * 100
+  end
+
+  if dice.select { |num| num == 5 }.length == 3
+    score += 500
+  else
+    score += (dice.select { |num| num == 5 }.length / 3).floor * 500
+    score += (dice.select { |num| num == 5 }.length % 3) * 50
+  end
+
+  if dice.select { |num| num == 2 }.length == 3
+    score += 200
+  end
+  
+  if dice.select { |num| num == 3 }.length == 3
+    score += 300
+  end
+
+  if dice.select { |num| num == 4 }.length == 3
+    score += 400
+  end
+
+  if dice.select { |num| num == 6 }.length == 3
+    score += 600
+  end
+
+  return score
   # You need to write this method
 end
 
