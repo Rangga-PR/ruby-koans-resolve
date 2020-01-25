@@ -17,6 +17,9 @@ def triangle(a, b, c)
   # WRITE THIS CODE
   triangle = [a, b, c]
 
+  fail TriangleError if
+    [a, b, c].max >= (a + b + c) / 2.0
+
   if !triangle.uniq!
     return :scalene
   else
