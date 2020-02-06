@@ -4,6 +4,13 @@ def my_global_method(a,b)
   a + b
 end
 
+class AboutPrivateMethods
+  def my_private_method_for_test
+    "a secret test"
+  end
+  private :my_private_method_for_test
+end
+
 class AboutMethods < Neo::Koan
 
   def test_calling_global_methods
@@ -118,9 +125,10 @@ class AboutMethods < Neo::Koan
 
   def test_calling_private_methods_with_an_explicit_receiver
     exception = assert_raise(NoMethodError) do
-      self.my_private_method
+      privateMethod = AboutPrivateMethods.new
+      privateMethod.my_private_method_for_test
     end
-    assert_match /\w+/, exception.message
+    assert_match /private/, exception.message
   end
 
   # ------------------------------------------------------------------
